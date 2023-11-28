@@ -1,4 +1,4 @@
-package com.workintech;
+package entity;
 
 import entity.Task;
 
@@ -30,7 +30,7 @@ public class TaskData {
             return this.carolsTasks;
         }
         if (owner.equalsIgnoreCase("all")) {
-            return getUnion(annsTasks, bobsTasks, carolsTasks);
+            return getUnion(annsTasks, bobsTasks, carolsTasks,unAssignedTask);
         }
         return new HashSet<>();
     }

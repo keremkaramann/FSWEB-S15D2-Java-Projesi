@@ -1,4 +1,4 @@
-import com.workintech.TaskData;
+import entity.TaskData;
 import entity.Priority;
 import entity.Status;
 import entity.Task;
@@ -10,7 +10,6 @@ public class Main {
     public static void main(String[] args) {
 
         Task task1 = new Task("s15d2", "dummy dec", "bob", Priority.HIGH, Status.ASSIGNED);
-        Task task2 = new Task("s15d2", "dummy dec2", "bob", Priority.HIGH, Status.IN_QUEUE);
 
         Task task3 = new Task("s15d2", "dummy dec2", "ann", Priority.MED, Status.ASSIGNED);
 
@@ -32,13 +31,22 @@ public class Main {
         Set<Task> all = taskData.getTasks("all");
         System.out.println(all);
         System.out.println("***2***");
-        taskData.getTasks("bob");
-        taskData.getTasks("ann");
-        taskData.getTasks("carol");
+        Set<Task> bobTasks = taskData.getTasks("bob");
+        System.out.println(bobTasks);
+        Set<Task> annTaskss = taskData.getTasks("ann");
+        System.out.println(annTaskss);
+        Set<Task> carolTasks = taskData.getTasks("carol");
+        System.out.println(carolTasks);
+        System.out.println("***2end***");
 
         System.out.println("---3----");
-        taskData.getIntersection(bobTask, annTasks);
-        taskData.getIntersection(bobTask, carolTask);
-        taskData.getIntersection(carolTask, annTasks);
+        Set<Task> intersection1 = taskData.getIntersection(taskData.getTasks("bob"), taskData.getTasks("ann"));
+        System.out.println(intersection1);
+        Set<Task> intersection2 = taskData.getIntersection(taskData.getTasks("bob"), taskData.getTasks("carol"));
+        System.out.println(intersection2);
+        Set<Task> intersection3 = taskData.getIntersection(taskData.getTasks("carol"), taskData.getTasks("ann"));
+        System.out.println(intersection3);
+        System.out.println("---3end----");
+
     }
 }
